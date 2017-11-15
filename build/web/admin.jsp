@@ -26,11 +26,11 @@
                 <input type="submit"  class="btn btn-red" value="Buscar Produto" title="Buscar Produto">
             </fieldset>                
         </form>
-        <a href="ExibeCliente.jsp" class="btn btn-purple">Mostrar Todos</a>
+        <!--<a href="ExibeCliente.jsp" class="btn btn-purple">Mostrar Todos</a>
         <a href="ExibeCliente.jsp" class="btn btn-green">Mostrar Todos</a>
         <a href="ExibeCliente.jsp" class="btn btn-red">Mostrar Todos</a>
-        <a href="ExibeCliente.jsp" class="btn btn-purple">Mostrar Todos</a>
-        <a href="ExibeCliente.jsp" class="btn btn-green">Mostrar Todos</a>
+        <a href="ExibeCliente.jsp" class="btn btn-purple">Mostrar Todos</a> -->
+        
         </div>
         <!--
         <br>

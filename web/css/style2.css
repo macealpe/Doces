@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Amaranth|Bahiana|Kaushan+Script|Lobster|Permanent+Marker|Satisfy');
+@import url('https://fonts.googleapis.com/css?family=Germania+One|Passion+One');
+@font-face { font-family: 'Edo'; src: url('../fonts/edosz.ttf'); }
+@font-face { font-family: 'Gotham-Regular'; src: url('../fonts/Gotham-Book.otf'); }
+
+body, html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+  background-color:#F2F2F2; 
+}
+.produto{
+  text-align: center;
+}
+
+.form-inline .form-control {
+    display: inline-block;
+    width: 569px;
+    vertical-align: middle;
+    margin-left:150px; 
+}
+.carrinho img{
+    margin-top: 20px;
+    margin-left: 50px;
+}
+.navbar-light .navbar-nav .nav-link {
+	color: #f8f9fa;
+	font-family: 'Germania One', cursive;
+	font-size: 19px;
+}
+
+
+.hr-geral {
+	border: #d41515 solid 4px;
+  width: 125px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.form-control-edt{
+  border-radius: 0;
+  border: 2px solid rgba(0,0,0,.15);
+  font-family: 'Bahiana';
+  font-size: 22px;
+
+}
+.btn-submit {
+  font-family: 'Bahiana';
+  font-size: 22px;
+  background-color: #d41515;
+  border-color: #d41515;
+  border-radius: 0;
+}
+.with-id {
+  text-align:center;
+  padding:90px 80px;
+  text-align: justify;
+  padding-bottom: 30px;
+}
+.with-id h2 {
+  padding-bottom: 4px;
+  font-family: 'Bahiana', cursive;
+  font-size: 55px;
+  color: black;
+}
+
+.btn-submit:hover {
+  background-color: #d41515;
+  border-color: #d41515;
+  color: black;
+}
+.form-control-edt:focus {
+  border: 2px solid rgba(212, 21, 21, 0.77);
+}
+.form-group-edt input, .form-group-edt textarea {
+  background-color: #EEEEEE;
+}
+
+footer {
+  padding: 18px;
+  background-color: #C0C0C0; 
+  font-family: 'Germania One', cursive; color: black;
+  margin-top: 17px; padding-bottom: 0px;
+  margin-bottom: 0;
+  position:absolute;
+  bottom:0;
+  width:100%;
+}

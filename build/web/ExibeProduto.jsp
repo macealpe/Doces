@@ -14,12 +14,22 @@
     </head>
     <body>
         <h1>Dados do Produto:</h1>
-        <% Produto produto = (Produto) request.getAttribute("produtocadastrado"); %>
-        <p><%= "Id do Produto: " + produto.getId() %></p>
-        <p><%= "Descrição do Produto: " + produto.getDescricao() %></p>
-        <p><%= "Preço do Produto: " + produto.getPrecoUnitario() %></p>
-        <p><%= "Quantidade em Estoque: " + produto.getQuantidadeEstoque() %></p>
-        <p><%= "Imagem do Produto: " + produto.getImagemProduto() %></p>
-        <p><%= "Produto Ativo: " + produto.isAtivo() %></p>        
+        <%-- <//jsp:useBean id="dao" class="jdbc.ProdutoDao"/> --%>
+       
+        <p><img src="imagens/${produto.imagemProduto}"></p> 
+        <p>Id: ${produto.id}</p>
+        <p>Descrição: ${produto.descricao}</p>
+        <p>Preço Unitário R$: ${produto.precoUnitario}</p>
+        <p>Qt. Estoque: ${produto.quantidadeEstoque}</p>
+        <p>Ativo: ${produto.ativo}</p> 
+        <form action="ProdutoServlet" method="POST">
+            <input type="hidden" name="operacao" value="update">
+            <input type="hidden" name="id" value="${produto.id}">
+            <input type="hidden" name="descricao" value="${produto.descricao}">
+            <input type="hidden" name="preco" value="${produto.precoUnitario}">
+            <input type="hidden" name="quantidade" value="${produto.quantidadeEstoque}">
+            <input type="hidden" name="imagem" value="${produto.imagemProduto}">
+            <input type="submit"  class="btn btn-red" value="Alterar Produto" title="Alterar Produto">
+        </form>        
     </body>
 </html>

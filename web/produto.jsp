@@ -14,10 +14,6 @@
     </head>
     <body>
         <form action="ProdutoServlet" method="POST" accept-charset="UTF-8">
-            <!--<input type="text" id="part" name="part" required pattern="[A-Z]{3}[0-9]{4}"
-       title="Part numbers consist of 3 uppercase letters followed by 4 digits."/>
-            <input type="submit" formnovalidate value="Save">
-            <input type="submit" value="Submit"> -->
             <fieldset>
                 <legend>CADASTRO DE PRODUTO</legend>
                 <p>
@@ -37,6 +33,7 @@
                     <input type="file" name="imagem" required>
                 </p>
                 <p>
+                    <input type="hidden" name="operacao" value="insert"> 
                     <input type="submit" value="Cadastrar">
                 </p>
             </fieldset>

@@ -31,7 +31,7 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
     PageContext _jspx_page_context = null;
 
     try {
-      response.setContentType("text/html");
+      response.setContentType("text/html;charset=UTF-8");
       pageContext = _jspxFactory.getPageContext(this, request, response,
       			null, true, 8192, true);
       _jspx_page_context = pageContext;
@@ -46,17 +46,18 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"css/admin.css\">\n");
-      out.write("        <title>?rea Administrativa</title>\n");
+      out.write("        <title>Admin :  Consultas</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <div id=\"caixa\">\n");
       out.write("        <h1>Área Administrativa</h1>\n");
-      out.write("        <form action=\"ProdutoServlet\" method=\"POST\">\n");
+      out.write("        <form action=\"ProdutoServlet\" method=\"POST\" accept-charset=\"UTF-8\">\n");
       out.write("            <fieldset>\n");
       out.write("                <legend>PRODUTOS</legend>\n");
       out.write("                <label for=\"id\">Id Produto:</label>\n");
@@ -65,11 +66,11 @@ public final class admin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <input type=\"submit\"  class=\"btn btn-red\" value=\"Buscar Produto\" title=\"Buscar Produto\">\n");
       out.write("            </fieldset>                \n");
       out.write("        </form>\n");
-      out.write("        <a href=\"ExibeCliente.jsp\" class=\"btn btn-purple\">Mostrar Todos</a>\n");
+      out.write("        <!--<a href=\"ExibeCliente.jsp\" class=\"btn btn-purple\">Mostrar Todos</a>\n");
       out.write("        <a href=\"ExibeCliente.jsp\" class=\"btn btn-green\">Mostrar Todos</a>\n");
       out.write("        <a href=\"ExibeCliente.jsp\" class=\"btn btn-red\">Mostrar Todos</a>\n");
-      out.write("        <a href=\"ExibeCliente.jsp\" class=\"btn btn-purple\">Mostrar Todos</a>\n");
-      out.write("        <a href=\"ExibeCliente.jsp\" class=\"btn btn-green\">Mostrar Todos</a>\n");
+      out.write("        <a href=\"ExibeCliente.jsp\" class=\"btn btn-purple\">Mostrar Todos</a> -->\n");
+      out.write("        \n");
       out.write("        </div>\n");
       out.write("        <!--\n");
       out.write("        <br>\n");

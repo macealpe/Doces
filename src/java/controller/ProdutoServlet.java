@@ -56,48 +56,53 @@ public class ProdutoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //String descricao = request.getParameter("descricao");
-        //Double preco = Double.valueOf(request.getParameter("preco"));
-        //Integer quantidade = Integer.valueOf(request.getParameter("quantidade"));
-        //String imagem = request.getParameter("imagem");
-        Integer id = Integer.valueOf(request.getParameter("id"));
-
         Produto produto = new Produto();
-        //produto.setDescricao(descricao);
-        //produto.setPrecoUnitario(preco);
-        //produto.setQuantidadeEstoque(quantidade);
-        //produto.setImagemProduto(imagem);
-        produto.setId(id);
-
         ProdutoDao dao = new ProdutoDao();
+        Integer id;
         // Reportando informações para o usuário
         String report = "";
 
         switch (request.getParameter("operacao")) {
             case "insert":
-                if(dao.adicionaProduto(produto)) {
+                /*String descricao = request.getParameter("descricao");
+                Double preco = Double.valueOf(request.getParameter("preco"));
+                Integer quantidade = Integer.valueOf(request.getParameter("quantidade"));
+                String imagem = request.getParameter("imagem");
+                //Integer id = Integer.valueOf(request.getParameter("id"));
+                
+                produto.setDescricao(descricao);
+                produto.setPrecoUnitario(preco);
+                produto.setQuantidadeEstoque(quantidade);
+                produto.setImagemProduto(imagem);
+                //produto.setId(id);
+                if (dao.adicionaProduto(produto)) {
                     report = "Produto já cadastrado no Banco!!!";
-                }
-                else {
+                } else {
                     report = "Produto cadastrado com sucesso!!!";
-                }
+                }*/
                 break;
             case "update":
+                /*id = Integer.valueOf(request.getParameter("id"));
+                produto.setId(id);
                 dao.atualizaProduto(produto);
+                request.setAttribute("produto", produto);
+                request.getRequestDispatcher("ExibeProduto.jsp").forward(request, response);
+                report = "Produto com id: " + produto.getId() + " atualizado.";*/
                 break;
             case "select":
+                id = Integer.valueOf(request.getParameter("id"));
+                produto.setId(id);
                 Produto produtoDoBanco = dao.consultaProduto(produto);
-                request.setAttribute("produtocadastrado", produtoDoBanco);
+                request.setAttribute("produto", produtoDoBanco);
                 request.getRequestDispatcher("ExibeProduto.jsp").forward(request, response);
                 break;
             case "drop":
-                dao.removeProduto(produto);
+                /*id = Integer.valueOf(request.getParameter("id"));
+                produto.setId(id);
+                dao.removeProduto(produto);*/
                 break;
             case "showAll":
-                dao.listaTodosProdutos();
-                break;
-            case "find":
-                dao.buscaProduto(produto);
+                //dao.listaTodosProdutos();
                 break;
             default:
                 break;
