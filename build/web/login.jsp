@@ -13,18 +13,18 @@
         <title>Página de Login</title>
     </head>
     <body>
-        <form action="" method="">
+        <form action="ClienteServlet" method="POST">
             <fieldset>
                 <legend>LOGIN</legend>
                 <p>
                     <label for="usuario">Usuário</label>
                     <input type="text" name="usuario" required> 
-                </p>
-                
+                </p>                    
                 <p>
                     <label for="senha">Senha:</label>
                     <input type="password" name="senha" required>
                 </p>
+                <input type="hidden" name="operacao" value="login">
                 <p>
                     <input type="submit" value="Entrar">
                 </p>

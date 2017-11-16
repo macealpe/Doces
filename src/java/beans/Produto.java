@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class Produto implements Serializable {
     private Integer id;
     private String descricao;
+    private String categoria;
     private double precoUnitario;
     private int quantidadeEstoque;
     private String imagemProduto;
@@ -37,6 +38,14 @@ public class Produto implements Serializable {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }   
 
     public double getPrecoUnitario() {
         return precoUnitario;

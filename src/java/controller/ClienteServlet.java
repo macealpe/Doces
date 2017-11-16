@@ -43,7 +43,7 @@ public class ClienteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     /**
@@ -57,39 +57,78 @@ public class ClienteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String nome = request.getParameter("nome");
-        String usuario = request.getParameter("usuario");
-        String senha = request.getParameter("senha"); 
-        String endereco = request.getParameter("endereco");
-        String telefone = request.getParameter("telefone");
-        String email = request.getParameter("email");
-        String cpf = request.getParameter("cpf");
-        String rg = request.getParameter("rg");
-        String foto = request.getParameter("foto");
-                
+
         Cliente cliente = new Cliente();
-        cliente.setNome(nome);
-        cliente.setUsuario(usuario);
-        cliente.setSenha(senha);
-        cliente.setEndereco(endereco);
-        cliente.setTelefone(telefone);
-        cliente.setEmail(email);
-        cliente.setCpf(cpf);
-        cliente.setRg(rg);
-        cliente.setFoto(foto);
-        cliente.setAtivo(true);
-        
-        
         ClienteDao dao = new ClienteDao();
-        Cliente clienteDoBanco = new Cliente();
+        String report;
+        report = "";
+        String nome;
+        String usuario;
+        String senha;
+        String endereco;
+        String telefone;
+        String email;
+        String cpf;
+        String rg;
+        String foto;
         
-        dao.adicionaCliente(cliente);
-        //HttpSession sessao = request.getSession();
-        
-        clienteDoBanco = dao.consultaCliente(cliente);
-        request.setAttribute("clientecadastrado", clienteDoBanco);
-        request.getRequestDispatcher("ExibeCliente.jsp").forward(request, response); 
+        switch (request.getParameter("operacao")) {
+            case "insert":  
+                nome = request.getParameter("nome");
+                usuario = request.getParameter("usuario");
+                senha = request.getParameter("senha");
+                endereco = request.getParameter("endereco");
+                telefone = request.getParameter("telefone");
+                email = request.getParameter("email");
+                cpf = request.getParameter("cpf");
+                rg = request.getParameter("rg");
+                foto = request.getParameter("foto");
+                                
+                cliente.setNome(nome);
+                cliente.setUsuario(usuario);
+                cliente.setSenha(senha);
+                cliente.setEndereco(endereco);
+                cliente.setTelefone(telefone);
+                cliente.setEmail(email);
+                cliente.setCpf(cpf);
+                cliente.setRg(rg);
+                cliente.setFoto(foto);
+                cliente.setAtivo(true);
+                
+                //Cliente clienteDoBanco = new Cliente();
+
+                if (dao.adicionaCliente(cliente)) {
+                    report = "Cliente já cadastrado no Banco!!!";
+                } else {
+                    report = "Cliente cadastrado com sucesso!!!";
+                }
+                System.out.println("REPORT: " + report);
+                //HttpSession sessao = request.getSession();
+
+                //clienteDoBanco = dao.consultaCliente(cliente);
+                //request.setAttribute("clientecadastrado", clienteDoBanco);
+                request.getRequestDispatcher("listaclientes.jsp").forward(request, response);
+                break;
+            case "login":
+                usuario = request.getParameter("usuario");
+                senha = request.getParameter("senha");  
+                
+                cliente.setUsuario(usuario);
+                cliente.setSenha(senha);                
+                if (dao.existeUsuario(cliente)) {                    
+                    report = "Seja bem vindo, " + cliente.getUsuario();
+                    request.setAttribute("report", report);
+                    request.getRequestDispatcher("carrinho.jsp").forward(request, response);
+                }
+                else {
+                    report = "Usuário e/ou Senha incorretos";
+                    request.setAttribute("report", report);
+                    request.getRequestDispatcher("erro.jsp").forward(request, response);
+                }                
+                break;                    
+            default:
+                break;
+        }        
     }
 
     /**

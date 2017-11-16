@@ -22,7 +22,7 @@
         <jsp:useBean id="dao" class="jdbc.ClienteDao"/>
         
         <h1>Lista de Clientes:</h1>
-        <table border="1" bordercolor="777777" cellspacing="0">
+        <table border="1" bordercolor="#777777" cellspacing="0">
             <tr bgcolor="#FFFFF0">
                 <td>Ordem</td>
                 <td>ID</td>
@@ -49,7 +49,12 @@
                     <td>${cli.email}</td>
                     <td>${cli.cpf}</td>
                     <td>${cli.rg}</td>
-                    <td><img src="imagens/${cli.foto}"></td>
+                    <c:if test = "${cli.foto==''}">
+                        <td><img src="imagens/foto_default.jpg"></td>
+                    </c:if>
+                    <c:if test = "${cli.foto!=''}">
+                        <td><img src="imagens/${cli.foto}"></td>
+                    </c:if>
                     <td>${cli.ativo}</td> 
                 </tr>
             </c:forEach>

@@ -28,14 +28,15 @@ public class ProdutoDao {
 
     public boolean adicionaProduto(Produto produto) {
         if (!buscaProduto(produto)) {
-            String sql = "INSERT INTO PRODUTO (descricao, preco_unitario, quantidade_estoque, imagem_produto, ativo) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO PRODUTO (descricao, categoria, preco_unitario, quantidade_estoque, imagem_produto, ativo) VALUES (?, ?, ?, ?, ?, ?)";
 
             try (PreparedStatement pstmt = conexao.prepareStatement(sql)) {
                 pstmt.setString(1, produto.getDescricao());
-                pstmt.setDouble(2, produto.getPrecoUnitario());
-                pstmt.setInt(3, produto.getQuantidadeEstoque());
-                pstmt.setString(4, produto.getImagemProduto());
-                pstmt.setBoolean(5, produto.isAtivo());
+                pstmt.setString(2, produto.getCategoria());
+                pstmt.setDouble(3, produto.getPrecoUnitario());
+                pstmt.setInt(4, produto.getQuantidadeEstoque());
+                pstmt.setString(5, produto.getImagemProduto());
+                pstmt.setBoolean(6, produto.isAtivo());
                 pstmt.execute();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -46,15 +47,16 @@ public class ProdutoDao {
     }
 
     public void atualizaProduto(Produto produto) {
-        String sql = "UPDATE TABLE PRODUTO SET descricao=?, preco_unitario=?, quantidade_estoque=?, imagem_produto=?, ativo=? WHERE id_produto=?";
+        String sql = "UPDATE TABLE PRODUTO SET descricao=?, categoria=?, preco_unitario=?, quantidade_estoque=?, imagem_produto=?, ativo=? WHERE id_produto=?";
 
         try (PreparedStatement pstmt = conexao.prepareStatement(sql)) {
             pstmt.setString(1, produto.getDescricao());
-            pstmt.setDouble(2, produto.getPrecoUnitario());
-            pstmt.setInt(3, produto.getQuantidadeEstoque());
-            pstmt.setString(4, produto.getImagemProduto());
-            pstmt.setBoolean(5, produto.isAtivo());
-            pstmt.setInt(6, produto.getId());
+            pstmt.setString(2, produto.getCategoria());
+            pstmt.setDouble(3, produto.getPrecoUnitario());
+            pstmt.setInt(4, produto.getQuantidadeEstoque());
+            pstmt.setString(5, produto.getImagemProduto());
+            pstmt.setBoolean(6, produto.isAtivo());
+            pstmt.setInt(7, produto.getId());
             pstmt.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -70,6 +72,7 @@ public class ProdutoDao {
             if (rs.next()) {
                 produto.setId(rs.getInt("id_produto"));
                 produto.setDescricao(rs.getString("descricao"));
+                produto.setCategoria(rs.getString("categoria"));
                 produto.setPrecoUnitario(rs.getDouble("preco_unitario"));
                 produto.setQuantidadeEstoque(rs.getInt("quantidade_estoque"));
                 produto.setImagemProduto(rs.getString("imagem_produto"));
@@ -82,15 +85,16 @@ public class ProdutoDao {
     }
 
     public void removeProduto(Produto produto) {
-        String sql = "UPDATE TABLE PRODUTO SET descricao=?, preco_unitario=?, quantidade_estoque=?, imagem_produto=?, ativo=? WHERE id_produto=?";
+        String sql = "UPDATE TABLE PRODUTO SET descricao=?, categoria=?, preco_unitario=?, quantidade_estoque=?, imagem_produto=?, ativo=? WHERE id_produto=?";
 
         try (PreparedStatement pstmt = conexao.prepareStatement(sql)) {
             pstmt.setString(1, produto.getDescricao());
-            pstmt.setDouble(2, produto.getPrecoUnitario());
-            pstmt.setInt(3, produto.getQuantidadeEstoque());
-            pstmt.setString(4, produto.getImagemProduto());
-            pstmt.setBoolean(5, produto.isAtivo());
-            pstmt.setInt(6, produto.getId());
+            pstmt.setString(2, produto.getCategoria());
+            pstmt.setDouble(3, produto.getPrecoUnitario());
+            pstmt.setInt(4, produto.getQuantidadeEstoque());
+            pstmt.setString(5, produto.getImagemProduto());
+            pstmt.setBoolean(6, produto.isAtivo());
+            pstmt.setInt(7, produto.getId());
             pstmt.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -107,6 +111,7 @@ public class ProdutoDao {
                 Produto produto = new Produto();
                 produto.setId(rs.getInt("id_produto"));
                 produto.setDescricao(rs.getString("descricao"));
+                produto.setCategoria(rs.getString("categoria"));
                 produto.setPrecoUnitario(rs.getDouble("preco_unitario"));
                 produto.setQuantidadeEstoque(rs.getInt("quantidade_estoque"));
                 produto.setImagemProduto(rs.getString("imagem_produto"));
@@ -125,7 +130,7 @@ public class ProdutoDao {
 
         try (PreparedStatement pstmt = conexao.prepareStatement(sql)) {
             pstmt.setString(1, produto.getDescricao());
-            ResultSet rs = pstmt.executeQuery(sql);
+            ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 achou = true;
             }

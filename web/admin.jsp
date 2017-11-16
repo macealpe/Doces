@@ -11,8 +11,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/admin.css">
-        <title>Admin :  Consultas</title>
+        <link rel="stylesheet" href="css/botoes.css">
+        <title>Silvana Doces e Salgados :: Admin</title>
     </head>
     <body>
         <div id="caixa">

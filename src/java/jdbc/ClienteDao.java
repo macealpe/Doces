@@ -75,7 +75,7 @@ public class ClienteDao {
         String sql = "SELECT * FROM CLIENTE WHERE cpf=?";
 
         try (PreparedStatement pstmt = conexao.prepareStatement(sql)) {
-            pstmt.setString(1, cliente.getCpf());
+            pstmt.setString(1, cliente.getCpf());           
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 cliente.setId(rs.getInt("id_cliente"));
@@ -148,10 +148,28 @@ public class ClienteDao {
     public boolean buscaCliente(Cliente cliente) {
         boolean achou = false;
 
-        String sql = "SELECT * FROM CLIENTE WHERE id_cliente=?";
+        String sql = "SELECT * FROM CLIENTE WHERE cpf=?";
 
         try (PreparedStatement pstmt = conexao.prepareStatement(sql)) {
-            pstmt.setInt(1, cliente.getId());
+            pstmt.setString(1, cliente.getCpf());
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                achou = true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return achou;
+    }
+
+    public boolean existeUsuario(Cliente cliente) {
+        boolean achou = false;
+
+        String sql = "SELECT * FROM CLIENTE WHERE usuario=? AND senha=md5(?)";
+
+        try (PreparedStatement pstmt = conexao.prepareStatement(sql)) {
+            pstmt.setString(1, cliente.getUsuario());
+            pstmt.setString(2, cliente.getSenha());
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 achou = true;

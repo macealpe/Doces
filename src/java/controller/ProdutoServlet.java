@@ -64,22 +64,25 @@ public class ProdutoServlet extends HttpServlet {
 
         switch (request.getParameter("operacao")) {
             case "insert":
-                /*String descricao = request.getParameter("descricao");
+                String descricao = request.getParameter("descricao");
+                String categoria = request.getParameter("categoria");
                 Double preco = Double.valueOf(request.getParameter("preco"));
                 Integer quantidade = Integer.valueOf(request.getParameter("quantidade"));
                 String imagem = request.getParameter("imagem");
                 //Integer id = Integer.valueOf(request.getParameter("id"));
                 
                 produto.setDescricao(descricao);
+                produto.setCategoria(categoria);
                 produto.setPrecoUnitario(preco);
                 produto.setQuantidadeEstoque(quantidade);
                 produto.setImagemProduto(imagem);
+                produto.setAtivo(true);
                 //produto.setId(id);
                 if (dao.adicionaProduto(produto)) {
                     report = "Produto já cadastrado no Banco!!!";
                 } else {
                     report = "Produto cadastrado com sucesso!!!";
-                }*/
+                }
                 break;
             case "update":
                 /*id = Integer.valueOf(request.getParameter("id"));
@@ -90,11 +93,11 @@ public class ProdutoServlet extends HttpServlet {
                 report = "Produto com id: " + produto.getId() + " atualizado.";*/
                 break;
             case "select":
-                id = Integer.valueOf(request.getParameter("id"));
+                /*id = Integer.valueOf(request.getParameter("id"));
                 produto.setId(id);
                 Produto produtoDoBanco = dao.consultaProduto(produto);
                 request.setAttribute("produto", produtoDoBanco);
-                request.getRequestDispatcher("ExibeProduto.jsp").forward(request, response);
+                request.getRequestDispatcher("ExibeProduto.jsp").forward(request, response);*/
                 break;
             case "drop":
                 /*id = Integer.valueOf(request.getParameter("id"));
